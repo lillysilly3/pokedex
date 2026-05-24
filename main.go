@@ -4,10 +4,15 @@ import (
 	"fmt"
 	"bufio"
 	"os"
+	"time"
+	"pokedex/internal/pokeapi"
 )
 
 func main() {
-	cfg := &Config{}
+	client := pokeapi.NewClient(30*time.Second, 5*time.Minute)
+	cfg := &Config{
+		Client: &client,
+	}
 	scanner := bufio.NewScanner(os.Stdin)
 	
 	for {
@@ -20,9 +25,10 @@ func main() {
 		}
 		
 		commandName := input[0]
+		args := input[1:]
 		command, ok := getCommands()[commandName]	
 		if ok {
-			err := command.callback(cfg)
+			err := command.callback(cfg, args)
 			if err != nil {
 				fmt.Println(err)
 			}
