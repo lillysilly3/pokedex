@@ -154,6 +154,9 @@ func commandCatch(cfg *Config, args []string) error {
 	fmt.Printf("Throwing a Pokeball at %s...\n", pokemonName)
 	
 	catchRate := 1.0 - float64(pokemon.BaseExperience)/400.0
+	if catchRate < 0.1 {
+		catchRate = 0.1
+	}
 	randVal := rand.Float64()
 	
 	if randVal <= catchRate {
