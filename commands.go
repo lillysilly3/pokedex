@@ -58,6 +58,11 @@ func getCommands() map[string]cliCommand {
 		description:	"Takes the name of a Pokemon and prints the name, height, weight, stats and type(s) of the Pokemon",
 		callback:		commandInspect,
 		},
+		"pokedex": {
+		name:			"pokedex",
+		description:	"Prints a list of all the names of the Pokemon that were caught",
+		callback:		commandPokedex,
+		},
 	}
 }
 
@@ -154,6 +159,7 @@ func commandCatch(cfg *Config, args []string) error {
 	if randVal <= catchRate {
 		fmt.Printf("%s was caught!\n", pokemon.Name)
 		cfg.Pokedex[pokemon.Name] = pokemon
+		fmt.Println("You may now inspect it with the inspect command.")
 	} else {
 		fmt.Printf("%s escaped!\n", pokemon.Name)
 	}
@@ -186,5 +192,18 @@ func commandInspect(cfg *Config, args []string) error {
 		fmt.Printf(" -%s\n", typeP.Type.Name)
 	}
 	
+	return nil
+}
+
+func commandPokedex(cfg *Config, args []string) error {
+	if len(cfg.Pokedex) == 0 {
+		fmt.Println("You have not caught any pokemons yet")
+		return nil
+	}
+	
+	fmt.Println("Your Pokedex:")
+	for _, pokemon := range cfg.Pokedex {
+		fmt.Printf(" -%s\n", pokemon.Name)
+	}
 	return nil
 }
