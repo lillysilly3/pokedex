@@ -13,6 +13,9 @@ Data is fetched live from the [PokéAPI](https://pokeapi.co/).
 - View your full Pokédex collection
 - API response caching to avoid redundant network requests
 
+![Pokedex screenshot 1](/internal/images/pokedex1.png)
+![Pokedex screenshot 2](/internal/images/pokedex2.png)
+
 ## Commands
 
 | Command | Description |
@@ -46,39 +49,6 @@ cd pokedex
 go run .
 ```
 
-## Example session
-
-```
-Pokédex > map
-cerulean-city
-vermilion-city
-lavender-town
-...
-
-Pokédex > explore cerulean-city
-Exploring cerulean-city...
-Found Pokemon:
- - psyduck
- - golduck
- - poliwag
-
-Pokédex > catch psyduck
-Throwing a Pokeball at psyduck...
-psyduck was caught!
-You may now inspect it with the inspect command.
-
-Pokédex > inspect psyduck
-Name: psyduck
-Height: 8
-Weight: 196
-Stats:
- -hp: 50
- -attack: 52
- -defense: 48
-Types:
- -water
-```
-
 ## Project structure
 
 ```
@@ -90,3 +60,18 @@ Types:
 └── internal/
     └── pokeapi/     # PokéAPI client with caching
 ```
+
+## Future ideas
+
+```
+
+ - Update the CLI to support the "up" arrow to cycle through previous commands
+ - Refactor code to organize it better and make it more testable
+ - Keep pokemon in a "party" and allow them to level up
+ - Persist a user's Pokedex to disk so they can save progress between sessions
+ - Adding support for different types of balls (Pokeballs, Great Balls, Ultra Balls, etc), which have different chances of catching pokemon
+```
+
+## Acknowledgments
+
+This project was built as part of the [Boot.dev](https://boot.dev) curriculum.
