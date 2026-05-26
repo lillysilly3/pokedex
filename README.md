@@ -39,6 +39,16 @@ catchRate = 1.0 - baseExperience / 400.0
 
 Weaker Pokémon (low base experience) are easier to catch. Stronger Pokémon are harder. No Pokémon is impossible to catch — just unlikely.
 
+## What I Learned
+
+- **Go basics** - Structs, interfaces, error handling, and Go's type system coming from Python
+- **REST API integration** - Fetching and deserializing JSON responses from PokeAPI
+- **Caching** - Implementing a time-based cache to avoid redundant API calls
+- **Concurrency** - Using goroutines to handle background tasks
+- **REPL design** - Building an interactive command loop with a clean command dispatch pattern
+- **CLI UX** - Designing intuitive commands and pagination for navigating large datasets
+- **Testing in Go** - Writing unit tests with Go's built-in testing package
+
 ## Getting started
 
 **Requirements:** Go 1.21+
@@ -64,7 +74,6 @@ go run .
 ## Future ideas
 
 ```
-
  - Update the CLI to support the "up" arrow to cycle through previous commands
  - Refactor code to organize it better and make it more testable
  - Keep pokemon in a "party" and allow them to level up
